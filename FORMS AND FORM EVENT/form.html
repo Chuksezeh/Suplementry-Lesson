@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms and Events</title>
+</head>
+<body>
+    <style>
+        form{
+            max-width: 200px;
+            margin: 40px auto;
+            background:darkgray;
+            padding: 10px;
+        }
+        input{
+            display: block;
+            margin: 10px auto;
+            padding: 4px;
+        }
+        .success{
+    border:2px solid lightgreen
+        } .error{
+            border: 2px solid crimson;
+        }
+    </style>
+    <form class="signup-form">
+        <input type="text" id="username" placeholder="username">
+        <input type="submit" value="submit">
+        <div class="feedback"></div>
+    
+    </form>
+    
+    <script src="form.js"></script>
+</body>
+</html>
