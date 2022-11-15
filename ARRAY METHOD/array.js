@@ -104,4 +104,64 @@ const chainArrays = users
 
 
 
+var myData = document.querySelector('.array')
+
+const allData = function() {
+      fetch ( 'https://jsonplaceholder.typicode.com/posts').then((response) =>{
+          console.log('resolved', response);
+          return response.json();
+          
+      }).then(data =>{
+          console.log(data);
+          console.log('info from jason', data[2].body);
+          
+      data.sort((a,b) =>{
+            b.data - a.data;
+          })
+          myData.innerHTML = data[2].body;
+      const info = JSON.parse(response)
+      console.log('converted', info)
+      }).catch((err) =>{
+          console.log('rejected', err)
+      });
+};
+allData(); 
+    
+// const getPro = async () =>{
+//  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+//  if (response.status !== 200) {
+//     throw new Error('cannot fetch the data');
+//  }
+//  const data = await response.json();
  
+//  myData.innerHTML = data.sort((a,b)=>{
+//   data.forEach(user =>{
+//     a.userId - b.userId;
+//   })
+//  });
+//  return data;
+
+// }
+// getPro()
+// .then(data => console.log('resolved:', data))
+// .catch(err =>console.log('rejected:', err.message));
+
+
+const getPro = async () =>{
+    const response = await fetch('https://datausa.io/api/data?drilldowns=Nation&measures=Population');
+    if (response.status !== 200) {
+       throw new Error('cannot fetch the data');
+    }
+    const data = await response.json();
+    console.log(data)
+    return data;
+   
+   }
+   getPro()
+   .then(data => console.log('resolved:', data))
+   .catch(err =>console.log('rejected:', err.message));
+   
+   
+
+
+
