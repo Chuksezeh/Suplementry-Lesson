@@ -146,20 +146,58 @@ allData();
 // .then(data => console.log('resolved:', data))
 // .catch(err =>console.log('rejected:', err.message));
 
-
+const displayPop = document.querySelector('.total')
 const getPro = async () =>{
-    const response = await fetch('https://datausa.io/api/data?drilldowns=Nation&measures=Population');
+    const response = await fetch('array.json');
     if (response.status !== 200) {
        throw new Error('cannot fetch the data');
     }
     const data = await response.json();
-    console.log(data)
-    return data;
-   
-   }
+    console.log(data);
+    const total = data.map((pop) =>{
+        console.log(pop)
+        if (pop.Population) {
+            return {Population: pop.Population}
+        }else{
+            return pop;
+        }
+        
+    })
+   console.log(total);
+   const totalPop = total.reduce((acc,curr)=>{
+      if (curr.Population) {
+        acc += curr.Population;
+      }
+      return acc;
+   },0)
+   console.log('The total U.S population from 2011 to 2020 is',totalPop);
+   displayPop.innerHTML = `<h1 class="total">The U.S total population from 2013 to 2020 is / ${totalPop}</h1>`
+
+
+   data.sort((a,b)=>{
+    if (b.Year > a.Year) {
+        return -1;
+    }else if (a.Year > b.Year) {
+        return 1;
+    } else {
+        return 0;
+    }
+   })
+   console.log(data)
+   };
    getPro()
    .then(data => console.log('resolved:', data))
    .catch(err =>console.log('rejected:', err.message));
+
+   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
+   function loadDoc() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("demo").innerHTML = this.responseText;
+      }
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+  }
    
    
 

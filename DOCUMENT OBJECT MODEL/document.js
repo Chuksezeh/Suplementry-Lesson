@@ -94,7 +94,7 @@ control.addEventListener('click', () =>{
     const li = document.createElement('li');
     li.textContent = 'something added';
     ul.append(li);
-    //ul.prepend(li);hg
+    //ul.prepend(li);
 });
 ul.addEventListener('click', e =>{
  if (e.target.tagName === 'LI') {

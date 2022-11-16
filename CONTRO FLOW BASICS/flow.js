@@ -103,7 +103,7 @@ const grades = [{name:'chubuzo', score: 50, class: 'js1'},
 //     default:
 //         break;
 // }
-const grade = 50;
+const grade = 70;
 
 switch (grade) {
     case 50:
