@@ -28,7 +28,7 @@ const user = {   name: 'control',
                                  
 }
 user.booksoso();
-//console.log(this)
+console.log(this)
 
 console.log(user.email);
 user.Age = 35;
